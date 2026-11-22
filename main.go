@@ -86,7 +86,7 @@ func inspect(repo, root string, fetch bool) []string {
 	status := git(repo, "status", "--porcelain")
 	total, untracked := 0, 0
 	if status != "" {
-		for _, l := range strings.Split(status, "\n") {
+		for l := range strings.SplitSeq(status, "\n") {
 			total++
 			if strings.HasPrefix(l, "??") {
 				untracked++
